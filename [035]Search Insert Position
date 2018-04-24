@@ -1,0 +1,23 @@
+class Solution:  
+    def searchInsert(self, nums, target):  
+        """ 
+        :type nums: List[int] 
+        :type target: int 
+        :rtype: int 
+        """  
+        first=0;last=len(nums)-1  
+        while (first<last):  
+            mid=(first+last+1)//2   %python3中，//表示取整除运算符，返回商的整数部分，/表示正常的除法，可得到小数，可得到整数  
+            if(nums[mid]==target):  
+                return mid  
+            elif(nums[mid]>target):  
+                last=mid-1  
+            else:  
+                first=mid+1   %按照我的理解，循环过后，要么找到了元素，要么此时last和first是紧挨着的状态。  
+        if (nums[last]<target ):  
+            return (last+1)  
+        if(nums[last]>=target):  
+            return last  
+        if(target<nums[first]):  
+            return first  
+        return first+1  
