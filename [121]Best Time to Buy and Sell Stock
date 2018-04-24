@@ -1,0 +1,21 @@
+class Solution:  
+    def maxProfit(self, prices):  
+        """ 
+        :type prices: List[int] 
+        :rtype: int 
+        """  
+        if len(prices) < 2:  
+            return 0  
+          
+        tv = prices  
+        profit, cs, ce = 0, 0, 0  
+        for i, t in enumerate(tv):  
+            if t < tv[cs]: cs = i  
+            if t > tv[ce]: ce = i  
+              
+            if cs > ce: ce = cs  
+              
+            if (tv[ce] - tv[cs]) > profit:  
+                profit = tv[ce] - tv[cs]  
+  
+        return profit  
