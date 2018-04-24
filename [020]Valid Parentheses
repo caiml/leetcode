@@ -1,0 +1,14 @@
+class Solution:  
+    def isValid(self, s):  
+        """ 
+        :type s: str 
+        :rtype: bool 
+        """  
+        sta=[None]  
+        dic={")":"(","}":"{","]":"["}  
+        for t in s:  
+            if(t in dic and dic[t]==sta[len(sta)-1]):  
+                sta.pop()  
+            else:  
+                sta.append(t)  
+        return len(sta) == 1  
