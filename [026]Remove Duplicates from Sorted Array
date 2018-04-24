@@ -1,0 +1,20 @@
+class Solution:  
+    def removeDuplicates(self, nums):  
+        """ 
+        :type nums: List[int] 
+        :rtype: int 
+        """  
+        i=1 #用来遍历整个列表  
+        j=1 #用来记录不同元素的个数  
+        n=len(nums)  
+        if (len(nums)==0):  
+            return 0  
+        else:  
+            while(i<n):  
+                if(nums[i]==nums[i-1]):  
+                    i+=1  
+                else:  
+                    nums[j]=nums[i]  
+                    j+=1  
+                    i+=1  
+            return j  
