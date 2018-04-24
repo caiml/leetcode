@@ -1,0 +1,13 @@
+class Solution:  
+    def generate(self, numRows):  
+        """ 
+        :type numRows: int 
+        :rtype: List[List[int]] 
+        """  
+        biao=[]  
+        for i in range(numRows):  
+            biao.append([1]*(i+1))%%注意这种生成（i+1）个1的方法  
+            if(i>1):  
+                for j in range(1,i):  
+                    biao[i][j]=biao[i-1][j-1]+biao[i-1][j]  
+        return biao  
