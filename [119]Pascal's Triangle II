@@ -1,0 +1,27 @@
+class Solution:  
+    def getRow(self, rowIndex):  
+        """ 
+        :type rowIndex: int 
+        :rtype: List[int] 
+        """  
+        biao = []  
+        for i in range(rowIndex+1):  
+            biao.append([1] * (i + 1))  
+            if (i > 1):  
+                for j in range(1, i):  
+                    biao[i][j] = biao[i - 1][j - 1] + biao[i - 1][j]  
+        return biao[-1]  
+ 
+ 
+ another solution:
+ class Solution:  
+    def getRow(self, rowIndex):  
+        """ 
+        :type rowIndex: int 
+        :rtype: List[int] 
+        """  
+        res = [[1]]  
+  
+        for i in range(0, rowIndex):  
+            res.append(list(map(lambda x, y: x + y, res[-1] + [0], [0] + res[-1])))  
+        return res[-1] 
