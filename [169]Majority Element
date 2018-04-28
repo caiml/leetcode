@@ -1,0 +1,56 @@
+1.暴力搜索：
+class Solution:  
+    def majorityElement(self, nums):  
+        """ 
+        :type nums: List[int] 
+        :rtype: int 
+        """  
+        major_num=len(nums)//2   %python3里的“/ "表示 浮点数除法，返回浮点结果;" // "表示整数除法  
+        for num in nums:  
+            s=sum(1 for elem in nums if elem==num )  %这里表示的是每次if判断正确就sum+1  
+            if (s>major_num):  
+                return num  
+
+
+2.Hash算法
+import collections  
+class Solution:  
+    def majorityElement(self, nums):  
+        """ 
+        :type nums: List[int] 
+        :rtype: int 
+        """  
+        counts=collections.Counter(nums) %从一个可迭代对象（list,tuple,dict,字符串）创建Counter类  
+        return max(counts.keys(),key=lambda x:counts.get(x))
+        
+        
+3.排序方法
+class Solution:  
+    def majorityElement(self, nums):  
+        """ 
+        :type nums: List[int] 
+        :rtype: int 
+        """  
+        nums.sort()  
+        return (nums[len(nums)//2])  
+       
+4.最大投票算法
+class Solution {  
+    public int majorityElement(int[] nums) {  
+          
+        int len = nums.length, candidate=nums[0], count=1;  
+          
+        for(int i=1; i<len; i++) {              
+            if(nums[i]==candidate)  
+                count++;  
+            else {  
+                count--;  
+                if(count==0) {  
+                    candidate=nums[i];  
+                    count=1;  
+                }  
+            }              
+        }          
+        return candidate;      
+    }  
+}  
