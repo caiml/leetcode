@@ -1,0 +1,40 @@
+1.暴露检索
+class Solution:
+    def rotate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        for i in range(k):
+            previous=nums[len(nums)-1]
+            for j in range(len(nums)):
+                temp=nums[j]
+                nums[j]=previous
+                previous=temp
+        return nums
+
+
+2.使用额外的数组
+class Solution:
+    def rotate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        a=nums[:]
+        for i in range(len(nums)):
+            a[(i+k)%(len(nums))]=nums[i]
+        for j in range(len(nums)):
+            nums[j]=a[j]
+            
+ 3.采用切片的办法
+ class Solution:
+    def rotate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        nums[:]=nums[len(nums)-k:]+nums[:(len(nums)-k)]
